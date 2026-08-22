@@ -265,10 +265,979 @@ main{position:relative;z-index:2;background:transparent;overflow:visible}
       rotateZ(-1deg) !important;
   }
 }
+/* ==========================================================
+   FIN PESTAÑA + MENU HAMBURGUESA
+========================================================== */
+/* ==========================================================
+   PESTAÑA + MENU HAMBURGUESA ENTRE HTML
+   SPECTRA <-> AX MOTOR
+========================================================== */
+
+.portfolioNavBtn{
+  position:fixed;
+  top:22px;
+  right:22px;
+  width:56px;
+  height:56px;
+  padding:0;
+  border:1px solid rgba(255,255,255,.28);
+  border-radius:50%;
+  background:rgba(10,10,14,.58);
+  backdrop-filter:blur(18px);
+  -webkit-backdrop-filter:blur(18px);
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  gap:6px;
+  cursor:pointer;
+  z-index:999999;
+  box-shadow:
+    0 14px 40px rgba(0,0,0,.28),
+    inset 0 1px 0 rgba(255,255,255,.15);
+  transition:.3s ease;
+}
+
+.portfolioNavBtn:hover{
+  transform:scale(1.06);
+  background:rgba(10,10,14,.80);
+}
+
+.portfolioNavBtn span{
+  display:block;
+  width:22px;
+  height:2px;
+  border-radius:20px;
+  background:#fff;
+  transition:.35s ease;
+}
+
+.portfolioNavBtn.is-open span:nth-child(1){
+  transform:translateY(8px) rotate(45deg);
+}
+
+.portfolioNavBtn.is-open span:nth-child(2){
+  opacity:0;
+}
+
+.portfolioNavBtn.is-open span:nth-child(3){
+  transform:translateY(-8px) rotate(-45deg);
+}
+
+
+/* FONDO OSCURO */
+
+.portfolioNavOverlay{
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,.48);
+  backdrop-filter:blur(6px);
+  -webkit-backdrop-filter:blur(6px);
+  opacity:0;
+  visibility:hidden;
+  transition:.35s ease;
+  z-index:999990;
+}
+
+.portfolioNavOverlay.is-open{
+  opacity:1;
+  visibility:visible;
+}
+
+
+/* PANEL LATERAL */
+
+.portfolioNavPanel{
+  position:fixed;
+  top:0;
+  right:0;
+  width:min(420px,92vw);
+  height:100dvh;
+  box-sizing:border-box;
+  padding:28px 26px;
+  background:
+    linear-gradient(
+      145deg,
+      rgba(14,14,18,.98),
+      rgba(4,4,7,.98)
+    );
+  border-left:1px solid rgba(255,255,255,.12);
+  box-shadow:-30px 0 80px rgba(0,0,0,.46);
+  backdrop-filter:blur(28px);
+  -webkit-backdrop-filter:blur(28px);
+  transform:translateX(105%);
+  transition:transform .48s cubic-bezier(.22,1,.36,1);
+  z-index:999995;
+  color:white;
+}
+
+.portfolioNavPanel.is-open{
+  transform:translateX(0);
+}
+
+
+/* CABECERA */
+
+.portfolioNavHead{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding-bottom:25px;
+  margin-bottom:8px;
+  border-bottom:1px solid rgba(255,255,255,.13);
+}
+
+.portfolioNavHead > div{
+  display:flex;
+  flex-direction:column;
+  gap:5px;
+}
+
+.portfolioNavHead small{
+  font-family:Arial,Helvetica,sans-serif;
+  font-size:9px;
+  font-weight:700;
+  letter-spacing:.22em;
+  color:rgba(255,255,255,.42);
+}
+
+.portfolioNavHead strong{
+  font-family:Arial,Helvetica,sans-serif;
+  font-size:18px;
+  letter-spacing:.12em;
+}
+
+.portfolioNavClose{
+  width:42px;
+  height:42px;
+  padding:0;
+  display:grid;
+  place-items:center;
+  border:1px solid rgba(255,255,255,.18);
+  border-radius:50%;
+  background:rgba(255,255,255,.04);
+  color:#fff;
+  font-size:27px;
+  line-height:1;
+  cursor:pointer;
+  transition:.3s ease;
+}
+
+.portfolioNavClose:hover{
+  transform:rotate(90deg);
+  background:rgba(255,255,255,.12);
+}
+
+
+/* PESTAÑAS */
+
+.portfolioNavTab{
+  position:relative;
+  min-height:92px;
+  padding:15px 10px;
+  display:grid;
+  grid-template-columns:42px minmax(0,1fr) 25px;
+  gap:12px;
+  align-items:center;
+  color:white;
+  text-decoration:none;
+  border-bottom:1px solid rgba(255,255,255,.10);
+  transition:.3s ease;
+}
+
+.portfolioNavTab::before{
+  content:"";
+  position:absolute;
+  left:0;
+  top:16px;
+  bottom:16px;
+  width:2px;
+  background:white;
+  transform:scaleY(0);
+  transition:.3s ease;
+}
+
+.portfolioNavTab:hover{
+  padding-left:18px;
+  background:rgba(255,255,255,.05);
+}
+
+.portfolioNavTab:hover::before,
+.portfolioNavTab.active::before{
+  transform:scaleY(1);
+}
+
+.portfolioNavTab.active{
+  background:rgba(255,255,255,.08);
+}
+
+.portfolioNavNum{
+  font-family:Arial,Helvetica,sans-serif;
+  font-size:10px;
+  letter-spacing:.15em;
+  color:rgba(255,255,255,.42);
+}
+
+.portfolioNavText{
+  display:flex;
+  flex-direction:column;
+  gap:6px;
+}
+
+.portfolioNavText strong{
+  font-family:Arial,Helvetica,sans-serif;
+  font-size:19px;
+  letter-spacing:.05em;
+}
+
+.portfolioNavText small{
+  font-family:Arial,Helvetica,sans-serif;
+  font-size:11px;
+  letter-spacing:.04em;
+  color:rgba(255,255,255,.48);
+}
+
+.portfolioNavArrow{
+  font-size:18px;
+  color:rgba(255,255,255,.65);
+  transition:.3s ease;
+}
+
+.portfolioNavTab:hover .portfolioNavArrow{
+  transform:translate(3px,-3px);
+}
+
+
+/* TELEFONO */
+
+@media(max-width:700px){
+
+  .portfolioNavBtn{
+    top:15px;
+    right:15px;
+    width:50px;
+    height:50px;
+  }
+
+  .portfolioNavBtn span{
+    width:20px;
+  }
+
+  .portfolioNavPanel{
+    width:92vw;
+    padding:22px 20px;
+  }
+
+  .portfolioNavTab{
+    min-height:84px;
+  }
+
+  .portfolioNavText strong{
+    font-size:17px;
+  }
+}
+
+
+
+/* ==========================================================
+   AJUSTE FINAL NAVEGACIÓN
+   - Hamburguesa pequeña a la izquierda
+   - Panel abre desde la izquierda
+   - Sin pestañas flotantes sobre la imagen
+   - Responsive en PC, tablet y teléfono
+========================================================== */
+
+.portfolioTopTabs{display:none !important;}
+
+.portfolioNavBtn{
+  top:76px !important;
+  left:28px !important;
+  right:auto !important;
+  width:44px !important;
+  height:44px !important;
+  gap:5px !important;
+  background:rgba(18,18,20,.70) !important;
+  border:1px solid rgba(255,255,255,.30) !important;
+  box-shadow:0 8px 24px rgba(0,0,0,.16),inset 0 1px 0 rgba(255,255,255,.14) !important;
+}
+
+.portfolioNavBtn span{
+  width:18px !important;
+  height:2px !important;
+}
+
+.portfolioNavBtn.is-open span:nth-child(1){
+  transform:translateY(7px) rotate(45deg) !important;
+}
+.portfolioNavBtn.is-open span:nth-child(2){
+  opacity:0 !important;
+}
+.portfolioNavBtn.is-open span:nth-child(3){
+  transform:translateY(-7px) rotate(-45deg) !important;
+}
+
+.portfolioNavPanel{
+  left:0 !important;
+  right:auto !important;
+  width:min(350px,88vw) !important;
+  padding:24px 22px !important;
+  border-left:none !important;
+  border-right:1px solid rgba(255,255,255,.12) !important;
+  box-shadow:24px 0 70px rgba(0,0,0,.34) !important;
+  transform:translateX(-105%) !important;
+}
+
+.portfolioNavPanel.is-open{
+  transform:translateX(0) !important;
+}
+
+.portfolioNavTab{
+  min-height:76px !important;
+  padding:12px 8px !important;
+  grid-template-columns:34px minmax(0,1fr) 20px !important;
+}
+
+.portfolioNavText strong{font-size:16px !important;}
+.portfolioNavText small{font-size:10px !important;}
+
+@media(max-width:900px){
+  .portfolioNavBtn{
+    top:64px !important;
+    left:18px !important;
+    width:42px !important;
+    height:42px !important;
+  }
+  .portfolioNavPanel{
+    width:min(330px,88vw) !important;
+  }
+}
+
+@media(max-width:600px){
+  .portfolioNavBtn{
+    top:58px !important;
+    left:14px !important;
+    width:38px !important;
+    height:38px !important;
+    gap:4px !important;
+  }
+
+  .portfolioNavBtn span{
+    width:16px !important;
+  }
+
+  .portfolioNavBtn.is-open span:nth-child(1){
+    transform:translateY(6px) rotate(45deg) !important;
+  }
+
+  .portfolioNavBtn.is-open span:nth-child(3){
+    transform:translateY(-6px) rotate(-45deg) !important;
+  }
+
+  .portfolioNavPanel{
+    width:86vw !important;
+    padding:20px 18px !important;
+  }
+
+  .portfolioNavTab{
+    min-height:70px !important;
+  }
+}
+
+
+/* ==========================================================
+   HEADER FINAL — MENU IZQUIERDA + PESTAÑAS CENTRADAS
+========================================================== */
+
+/* Ocultamos los textos originales del header para liberar espacio */
+.top .brand,
+.top .exp{
+  display:none !important;
+}
+
+/* El contador queda a la derecha */
+.top .step{
+  left:auto !important;
+  right:3vw !important;
+  transform:none !important;
+  font-size:10px !important;
+  letter-spacing:.16em !important;
+}
+
+/* Pestañas centrales visibles en escritorio */
+.portfolioTopTabs{
+  position:absolute !important;
+  top:18px !important;
+  left:50% !important;
+  transform:translateX(-50%) !important;
+  z-index:999998 !important;
+
+  display:flex !important;
+  align-items:center !important;
+  gap:6px !important;
+
+  padding:6px !important;
+  border-radius:18px !important;
+
+  background:rgba(255,255,255,.80) !important;
+  border:1px solid rgba(255,255,255,.95) !important;
+  backdrop-filter:blur(18px) saturate(1.2) !important;
+  -webkit-backdrop-filter:blur(18px) saturate(1.2) !important;
+
+  box-shadow:0 12px 34px rgba(28,20,55,.14) !important;
+}
+
+.portfolioTopTab{
+  display:flex !important;
+  align-items:center !important;
+  gap:9px !important;
+
+  min-width:132px !important;
+  justify-content:center !important;
+
+  padding:12px 16px !important;
+  border-radius:14px !important;
+
+  color:#111 !important;
+  text-decoration:none !important;
+
+  font:900 11px/1 Arial,Helvetica,sans-serif !important;
+  letter-spacing:.12em !important;
+  text-transform:uppercase !important;
+
+  transition:.25s ease !important;
+}
+
+.portfolioTopTab span{
+  font-size:9px !important;
+  opacity:.48 !important;
+}
+
+.portfolioTopTab:hover{
+  transform:translateY(-1px) !important;
+  background:rgba(255,255,255,.95) !important;
+}
+
+.portfolioTopTab.active{
+  color:#fff !important;
+  background:
+    linear-gradient(135deg,#111 0%,#161616 58%,#242424 100%) !important;
+}
+
+.portfolioTopTab.active span{
+  color:#a8ff66 !important;
+  opacity:1 !important;
+}
+
+/* Hamburguesa donde estaba SPECTRA: izquierda, compacta y de color */
+.portfolioNavBtn{
+  top:18px !important;
+  left:3vw !important;
+  right:auto !important;
+
+  width:48px !important;
+  height:48px !important;
+
+  border-radius:15px !important;
+  border:1px solid rgba(255,255,255,.86) !important;
+
+  background:
+    radial-gradient(circle at 28% 25%,rgba(255,255,255,.55),transparent 22%),
+    linear-gradient(135deg,#21d4fd 0%,#7b2cff 34%,#ff2ca8 67%,#ff9a16 100%) !important;
+
+  box-shadow:
+    0 12px 30px rgba(46,24,88,.22),
+    inset 0 1px 0 rgba(255,255,255,.55) !important;
+
+  gap:5px !important;
+}
+
+.portfolioNavBtn:hover{
+  transform:translateY(-1px) scale(1.03) !important;
+}
+
+.portfolioNavBtn span{
+  width:20px !important;
+  height:2px !important;
+  background:#fff !important;
+  box-shadow:0 1px 2px rgba(0,0,0,.18) !important;
+}
+
+.portfolioNavBtn.is-open span:nth-child(1){
+  transform:translateY(7px) rotate(45deg) !important;
+}
+.portfolioNavBtn.is-open span:nth-child(2){
+  opacity:0 !important;
+}
+.portfolioNavBtn.is-open span:nth-child(3){
+  transform:translateY(-7px) rotate(-45deg) !important;
+}
+
+/* Panel lateral desde la izquierda */
+.portfolioNavPanel{
+  left:0 !important;
+  right:auto !important;
+  width:min(350px,88vw) !important;
+  transform:translateX(-105%) !important;
+  border-left:none !important;
+  border-right:1px solid rgba(255,255,255,.12) !important;
+  box-shadow:24px 0 70px rgba(0,0,0,.34) !important;
+}
+.portfolioNavPanel.is-open{
+  transform:translateX(0) !important;
+}
+
+/* Tablet */
+@media(max-width:900px){
+  .portfolioTopTabs{
+    top:14px !important;
+    padding:5px !important;
+    border-radius:16px !important;
+  }
+
+  .portfolioTopTab{
+    min-width:112px !important;
+    padding:10px 12px !important;
+    font-size:10px !important;
+  }
+
+  .portfolioNavBtn{
+    top:14px !important;
+    left:18px !important;
+    width:44px !important;
+    height:44px !important;
+    border-radius:14px !important;
+  }
+
+  .top .step{
+    right:18px !important;
+  }
+}
+
+/* Teléfono */
+@media(max-width:600px){
+  .portfolioNavBtn{
+    top:12px !important;
+    left:12px !important;
+    width:40px !important;
+    height:40px !important;
+    border-radius:13px !important;
+  }
+
+  .portfolioNavBtn span{
+    width:17px !important;
+  }
+
+  .portfolioTopTabs{
+    top:12px !important;
+    left:64px !important;
+    right:12px !important;
+    transform:none !important;
+
+    justify-content:center !important;
+    gap:4px !important;
+
+    padding:4px !important;
+    border-radius:14px !important;
+  }
+
+  .portfolioTopTab{
+    flex:1 1 0 !important;
+    min-width:0 !important;
+    padding:9px 8px !important;
+    font-size:9px !important;
+    letter-spacing:.08em !important;
+    gap:5px !important;
+  }
+
+  /* En móvil quitamos el contador para no saturar el header */
+  .top .step{
+    display:none !important;
+  }
+
+  .portfolioNavPanel{
+    width:88vw !important;
+  }
+}
+
+/* ==========================================================
+   FIN HEADER FINAL
+========================================================== */
+
+
+/* ==========================================================
+   AJUSTE FINAL V2 — NAVEGACIÓN INTEGRADA AL HEADER
+   - Pestañas a la derecha, no centradas sobre la imagen
+   - Hamburguesa limpia con colores reales del diseño
+   - Panel claro tipo header, no negro
+   - Responsive
+========================================================== */
+
+/* PESTAÑAS: DERECHA DEL HEADER */
+.portfolioTopTabs{
+  position:absolute !important;
+  top:18px !important;
+  right:92px !important;
+  left:auto !important;
+  transform:none !important;
+
+  display:flex !important;
+  align-items:center !important;
+  gap:4px !important;
+
+  padding:4px !important;
+  border-radius:16px !important;
+
+  background:rgba(255,255,255,.90) !important;
+  border:1px solid rgba(20,20,20,.08) !important;
+  backdrop-filter:blur(16px) saturate(1.12) !important;
+  -webkit-backdrop-filter:blur(16px) saturate(1.12) !important;
+
+  box-shadow:0 10px 28px rgba(20,20,20,.08) !important;
+  z-index:999998 !important;
+}
+
+.portfolioTopTab{
+  min-width:118px !important;
+  padding:10px 14px !important;
+  border-radius:12px !important;
+
+  color:#111 !important;
+  background:transparent !important;
+
+  font:900 10px/1 Arial,Helvetica,sans-serif !important;
+  letter-spacing:.11em !important;
+}
+
+.portfolioTopTab span{
+  font-size:9px !important;
+  opacity:.55 !important;
+}
+
+.portfolioTopTab.active{
+  color:#111 !important;
+  background:
+    linear-gradient(90deg,
+      rgba(25,199,214,.16) 0%,
+      rgba(238,20,143,.14) 34%,
+      rgba(255,106,0,.14) 67%,
+      rgba(123,207,0,.14) 100%
+    ) !important;
+
+  box-shadow:
+    inset 0 0 0 1px rgba(17,17,17,.06),
+    0 6px 16px rgba(20,20,20,.05) !important;
+}
+
+.portfolioTopTab.active span{
+  color:#111 !important;
+  opacity:.7 !important;
+}
+
+.portfolioTopTab:hover{
+  background:rgba(0,0,0,.035) !important;
+  transform:none !important;
+}
+
+
+/* HAMBURGUESA: SE MANTIENE A LA IZQUIERDA, MÁS LIMPIA */
+.portfolioNavBtn{
+  top:18px !important;
+  left:3vw !important;
+  right:auto !important;
+
+  width:46px !important;
+  height:46px !important;
+
+  border-radius:14px !important;
+  border:1px solid rgba(17,17,17,.08) !important;
+
+  background:rgba(255,255,255,.92) !important;
+
+  box-shadow:
+    0 10px 28px rgba(20,20,20,.08),
+    inset 0 1px 0 rgba(255,255,255,.7) !important;
+
+  gap:4px !important;
+}
+
+/* tres rayas con los colores de la imagen */
+.portfolioNavBtn span{
+  width:20px !important;
+  height:2px !important;
+  border-radius:20px !important;
+  box-shadow:none !important;
+}
+
+.portfolioNavBtn span:nth-child(1){
+  background:#17c6d8 !important; /* cyan */
+}
+
+.portfolioNavBtn span:nth-child(2){
+  background:#e91b8d !important; /* magenta */
+}
+
+.portfolioNavBtn span:nth-child(3){
+  background:#ff7a00 !important; /* naranja */
+}
+
+
+/* OVERLAY MÁS SUAVE */
+.portfolioNavOverlay{
+  background:rgba(255,255,255,.18) !important;
+  backdrop-filter:blur(10px) saturate(.95) !important;
+  -webkit-backdrop-filter:blur(10px) saturate(.95) !important;
+}
+
+
+/* PANEL ABIERTO: MISMO LENGUAJE VISUAL DEL HEADER */
+.portfolioNavPanel{
+  left:0 !important;
+  right:auto !important;
+
+  width:min(370px,88vw) !important;
+  height:100dvh !important;
+
+  padding:28px 24px !important;
+
+  color:#111 !important;
+
+  background:
+    linear-gradient(
+      180deg,
+      rgba(255,255,255,.98) 0%,
+      rgba(255,255,255,.95) 100%
+    ) !important;
+
+  border-right:1px solid rgba(17,17,17,.08) !important;
+  border-left:none !important;
+
+  box-shadow:24px 0 70px rgba(20,20,20,.10) !important;
+
+  backdrop-filter:blur(24px) saturate(1.08) !important;
+  -webkit-backdrop-filter:blur(24px) saturate(1.08) !important;
+
+  transform:translateX(-105%) !important;
+}
+
+.portfolioNavPanel.is-open{
+  transform:translateX(0) !important;
+}
+
+
+/* CABECERA DEL PANEL */
+.portfolioNavHead{
+  position:relative !important;
+  padding-bottom:22px !important;
+  margin-bottom:8px !important;
+  border-bottom:1px solid rgba(17,17,17,.10) !important;
+}
+
+.portfolioNavHead::after{
+  content:"" !important;
+  position:absolute !important;
+  left:0 !important;
+  bottom:-1px !important;
+  width:110px !important;
+  height:2px !important;
+
+  background:
+    linear-gradient(
+      90deg,
+      #17c6d8 0%,
+      #e91b8d 33%,
+      #ff7a00 66%,
+      #7bcf00 100%
+    ) !important;
+}
+
+.portfolioNavHead small{
+  color:#777 !important;
+}
+
+.portfolioNavHead strong{
+  color:#111 !important;
+}
+
+
+/* CERRAR */
+.portfolioNavClose{
+  color:#111 !important;
+  background:#fff !important;
+  border:1px solid rgba(17,17,17,.10) !important;
+}
+
+.portfolioNavClose:hover{
+  background:#f6f6f6 !important;
+}
+
+
+/* PESTAÑAS DENTRO DEL PANEL */
+.portfolioNavTab{
+  color:#111 !important;
+  background:transparent !important;
+  border-bottom:1px solid rgba(17,17,17,.08) !important;
+
+  min-height:78px !important;
+  padding:12px 8px !important;
+
+  grid-template-columns:34px minmax(0,1fr) 20px !important;
+}
+
+.portfolioNavTab::before{
+  background:
+    linear-gradient(
+      180deg,
+      #17c6d8,
+      #e91b8d,
+      #ff7a00,
+      #7bcf00
+    ) !important;
+}
+
+.portfolioNavTab:hover{
+  background:rgba(0,0,0,.025) !important;
+}
+
+.portfolioNavTab.active{
+  background:
+    linear-gradient(
+      90deg,
+      rgba(23,198,216,.08),
+      rgba(233,27,141,.06),
+      rgba(255,122,0,.05),
+      rgba(123,207,0,.05)
+    ) !important;
+}
+
+.portfolioNavNum{
+  color:#777 !important;
+}
+
+.portfolioNavText strong{
+  color:#111 !important;
+  font-size:16px !important;
+}
+
+.portfolioNavText small{
+  color:#777 !important;
+  font-size:10px !important;
+}
+
+.portfolioNavArrow{
+  color:#111 !important;
+}
+
+
+/* CONTADOR: a la derecha pero sin chocar con las pestañas */
+.top .step{
+  left:auto !important;
+  right:28px !important;
+  transform:none !important;
+}
+
+
+/* TABLET */
+@media(max-width:980px){
+  .portfolioTopTabs{
+    right:76px !important;
+  }
+
+  .portfolioTopTab{
+    min-width:104px !important;
+    padding:9px 11px !important;
+    font-size:9px !important;
+  }
+
+  .top .step{
+    display:none !important;
+  }
+}
+
+
+/* MÓVIL: solo hamburguesa, sin pestañas superiores */
+@media(max-width:700px){
+  .portfolioTopTabs{
+    display:none !important;
+  }
+
+  .portfolioNavBtn{
+    top:12px !important;
+    left:12px !important;
+    width:40px !important;
+    height:40px !important;
+    border-radius:12px !important;
+  }
+
+  .portfolioNavBtn span{
+    width:17px !important;
+  }
+
+  .portfolioNavPanel{
+    width:88vw !important;
+    padding:22px 18px !important;
+  }
+
+  .top .step{
+    display:none !important;
+  }
+}
+
+/* ==========================================================
+   FIN AJUSTE FINAL V2
+========================================================== */
 
 </style>
 </head>
 <body>
+
+<!-- ===== NAVEGACIÓN ENTRE PÁGINAS ===== -->
+<button class="portfolioNavBtn" id="portfolioNavBtn" type="button"
+        aria-label="Abrir menú de navegación" aria-expanded="false">
+  <span></span><span></span><span></span>
+</button>
+
+<div class="portfolioNavOverlay" id="portfolioNavOverlay"></div>
+
+<nav class="portfolioTopTabs" aria-label="Navegación entre experiencias">
+  <a class="portfolioTopTab active" href="indexcoloresheader.html">
+    <span>01</span> SPECTRA
+  </a>
+  <a class="portfolioTopTab" href="index.html">
+    <span>02</span> COCHES 3D
+  </a>
+</nav>
+
+
+<nav class="portfolioNavPanel" id="portfolioNavPanel" aria-hidden="true">
+  <div class="portfolioNavHead">
+    <div>
+      <small>PORTAFOLIO 3D</small>
+      <strong>EXPERIENCIAS</strong>
+    </div>
+    <button class="portfolioNavClose" id="portfolioNavClose"
+            type="button" aria-label="Cerrar menú">×</button>
+  </div>
+
+  <a class="portfolioNavTab active" href="indexcoloresheader.html">
+    <span class="portfolioNavNum">01</span>
+    <span class="portfolioNavText">
+      <strong>SPECTRA</strong>
+      <small>Experiencia interactiva de color</small>
+    </span>
+    <span class="portfolioNavArrow">↗</span>
+  </a>
+
+  <a class="portfolioNavTab" href="index.html">
+    <span class="portfolioNavNum">02</span>
+    <span class="portfolioNavText">
+      <strong>COCHES 3D</strong>
+      <small>Experiencia automotriz</small>
+    </span>
+    <span class="portfolioNavArrow">↗</span>
+  </a>
+</nav>
+<!-- ===== FIN NAVEGACIÓN ENTRE PÁGINAS ===== -->
+
 <canvas id="inkCanvas"></canvas>
 <section class="hero">
 <div class="top"><div class="brand">SPECTRA<b>™</b></div><div class="step" id="step">01 / 06</div><div class="exp">EXPERIENCE IT</div></div>
@@ -665,6 +1634,48 @@ ui();
 
   document.querySelectorAll('.formulaCard').forEach(card=>card.addEventListener('click',()=>card.classList.toggle('open')));
 })();
+
+
 </script>
+
+<script>
+/* ===== NAVEGACIÓN ENTRE PÁGINAS ===== */
+(()=>{
+  const btn = document.getElementById('portfolioNavBtn');
+  const panel = document.getElementById('portfolioNavPanel');
+  const overlay = document.getElementById('portfolioNavOverlay');
+  const closeBtn = document.getElementById('portfolioNavClose');
+
+  if(!btn || !panel || !overlay) return;
+
+  const openMenu = ()=>{
+    btn.classList.add('is-open');
+    panel.classList.add('is-open');
+    overlay.classList.add('is-open');
+    btn.setAttribute('aria-expanded','true');
+    panel.setAttribute('aria-hidden','false');
+  };
+
+  const closeMenu = ()=>{
+    btn.classList.remove('is-open');
+    panel.classList.remove('is-open');
+    overlay.classList.remove('is-open');
+    btn.setAttribute('aria-expanded','false');
+    panel.setAttribute('aria-hidden','true');
+  };
+
+  btn.addEventListener('click', ()=>{
+    panel.classList.contains('is-open') ? closeMenu() : openMenu();
+  });
+
+  closeBtn?.addEventListener('click', closeMenu);
+  overlay.addEventListener('click', closeMenu);
+
+  document.addEventListener('keydown', e=>{
+    if(e.key === 'Escape') closeMenu();
+  });
+})();
+</script>
+
 </body>
 </html>

@@ -18,3 +18,158 @@ document.querySelector('.prev').addEventListener('click',()=>showAngle(viewIndex
 vehicleStage.addEventListener('pointerdown',e=>{dragStart=e.clientX;vehicleStage.setPointerCapture(e.pointerId)});vehicleStage.addEventListener('pointerup',e=>{if(dragStart===null)return;const delta=e.clientX-dragStart;if(Math.abs(delta)>28)showAngle(viewIndex+(delta<0?1:-1));dragStart=null});
 function closeModal(){modalBg.hidden=true;car.classList.remove('open');turned=false;hint.textContent='TOCA PARA VER EL MALETERO'}
 document.querySelector('.close').addEventListener('click',closeModal);modalBg.addEventListener('click',e=>{if(e.target===modalBg)closeModal()});addEventListener('keydown',e=>{if(e.key==='Escape')closeModal()});go.addEventListener('click',()=>{closeModal();document.querySelector('#modelos').scrollIntoView({behavior:'smooth'})});
+/* ==========================================================
+   PESTAÑAS + MENU HAMBURGUESA
+   COCHES 3D <-> SPECTRA
+   PEGAR AL FINAL DE script.js
+========================================================== */
+
+const portfolioNavBtn =
+  document.getElementById("portfolioNavBtn");
+
+const portfolioNavPanel =
+  document.getElementById("portfolioNavPanel");
+
+const portfolioNavOverlay =
+  document.getElementById("portfolioNavOverlay");
+
+const portfolioNavClose =
+  document.getElementById("portfolioNavClose");
+
+
+function abrirPortfolioNav(){
+
+  if(
+    !portfolioNavBtn ||
+    !portfolioNavPanel ||
+    !portfolioNavOverlay
+  ){
+    return;
+  }
+
+  portfolioNavBtn.classList.add("is-open");
+
+  portfolioNavPanel.classList.add("is-open");
+
+  portfolioNavOverlay.classList.add("is-open");
+
+  portfolioNavBtn.setAttribute(
+    "aria-expanded",
+    "true"
+  );
+
+  portfolioNavPanel.setAttribute(
+    "aria-hidden",
+    "false"
+  );
+
+}
+
+
+function cerrarPortfolioNav(){
+
+  if(
+    !portfolioNavBtn ||
+    !portfolioNavPanel ||
+    !portfolioNavOverlay
+  ){
+    return;
+  }
+
+  portfolioNavBtn.classList.remove("is-open");
+
+  portfolioNavPanel.classList.remove("is-open");
+
+  portfolioNavOverlay.classList.remove("is-open");
+
+  portfolioNavBtn.setAttribute(
+    "aria-expanded",
+    "false"
+  );
+
+  portfolioNavPanel.setAttribute(
+    "aria-hidden",
+    "true"
+  );
+
+}
+
+
+if(portfolioNavBtn){
+
+  portfolioNavBtn.addEventListener(
+    "click",
+    function(){
+
+      const abierto =
+        portfolioNavPanel.classList.contains(
+          "is-open"
+        );
+
+      if(abierto){
+
+        cerrarPortfolioNav();
+
+      }else{
+
+        abrirPortfolioNav();
+
+      }
+
+    }
+  );
+
+}
+
+
+if(portfolioNavClose){
+
+  portfolioNavClose.addEventListener(
+    "click",
+    cerrarPortfolioNav
+  );
+
+}
+
+
+if(portfolioNavOverlay){
+
+  portfolioNavOverlay.addEventListener(
+    "click",
+    cerrarPortfolioNav
+  );
+
+}
+
+
+/* CERRAR CON ESC */
+
+document.addEventListener(
+  "keydown",
+  function(event){
+
+    if(event.key === "Escape"){
+      cerrarPortfolioNav();
+    }
+
+  }
+);
+
+
+/* CERRAR EL PANEL AL ELEGIR UNA PAGINA */
+
+document
+  .querySelectorAll(".portfolioNavTab")
+  .forEach(function(enlace){
+
+    enlace.addEventListener(
+      "click",
+      cerrarPortfolioNav
+    );
+
+  });
+
+
+/* ==========================================================
+   FIN PESTAÑAS + MENU HAMBURGUESA
+========================================================== */

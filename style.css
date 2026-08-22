@@ -23,3 +23,642 @@
 .vehicle-viewer{position:relative;min-width:0}.vehicle-viewer[hidden]{display:none}.vehicle-stage{height:460px;overflow:hidden;position:relative;background:radial-gradient(circle,#30343b,#0a0b0e 70%);border:1px solid #343840;cursor:grab;user-select:none}.vehicle-stage:active{cursor:grabbing}.vehicle-photo{width:100%;height:100%;object-fit:cover;display:block;pointer-events:none;transition:opacity .14s ease,transform .3s ease}.vehicle-photo.changing{opacity:.25;transform:scale(.97)}.angle{position:absolute;z-index:3;top:210px;width:46px;height:46px;border:1px solid #ffffff35;background:#08090bcc;color:var(--lime);font-size:34px;cursor:pointer}.angle:hover{background:var(--lime);color:#08090b}.prev{left:12px}.next{right:12px}.angle-label{position:absolute;right:15px;bottom:13px;background:#08090bcc;padding:8px 11px;color:var(--lime);font-size:8px;letter-spacing:.15em}.angle-dots{display:flex;justify-content:center;gap:9px;margin-top:14px}.angle-dots button{width:9px;height:9px;border:1px solid #777;border-radius:50%;padding:0;background:transparent;cursor:pointer}.angle-dots button.active{background:var(--lime);border-color:var(--lime)}.drag-help{text-align:center;color:#858a91;font-size:8px;letter-spacing:.17em}.modal-info{align-self:center}.modal-info .modal-title{font-size:clamp(37px,4vw,60px)}
 @media(max-width:800px){.modal:has(.vehicle-viewer:not([hidden])){display:block;padding:48px 18px 28px;max-height:94vh;overflow:auto}.vehicle-stage{height:280px}.angle{top:120px}.modal-info{margin-top:22px}.modal-info .modal-title{font-size:38px}.specs{gap:22px}.drag-help{line-height:1.5}}
 .modal-go[hidden]{display:none}
+/* ==========================================================
+   PESTAÑAS + MENU HAMBURGUESA
+   COCHES 3D <-> SPECTRA
+   VERSION COMPACTA
+========================================================== */
+
+
+/* ==========================================================
+   HEADER
+========================================================== */
+
+header{
+  gap:16px;
+}
+
+
+/* Experiencia + Modelos + Explorar */
+
+header .main-nav{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:30px;
+  margin-left:auto;
+}
+
+header .main-nav a{
+  color:inherit;
+  text-decoration:none;
+}
+
+
+/* ==========================================================
+   PESTAÑAS A LA DERECHA
+========================================================== */
+
+.portfolioTopTabs{
+  display:flex;
+  align-items:center;
+  gap:3px;
+
+  padding:4px;
+
+  border:1px solid rgba(255,255,255,.12);
+  border-radius:999px;
+
+  background:rgba(255,255,255,.045);
+
+  backdrop-filter:blur(14px);
+  -webkit-backdrop-filter:blur(14px);
+
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.05),
+    0 10px 30px rgba(0,0,0,.15);
+
+  flex-shrink:0;
+}
+
+
+.portfolioTopTab{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:7px;
+
+  min-width:105px;
+
+  padding:10px 13px;
+
+  border-radius:999px;
+
+  color:#fff;
+  text-decoration:none;
+
+  font-size:10px;
+  font-weight:900;
+
+  letter-spacing:.10em;
+  text-transform:uppercase;
+
+  transition:.25s ease;
+}
+
+
+.portfolioTopTab span{
+  font-size:8px;
+  opacity:.55;
+}
+
+
+.portfolioTopTab:hover{
+  background:rgba(255,255,255,.07);
+}
+
+
+.portfolioTopTab.active{
+  background:#baff21;
+  color:#050607;
+
+  box-shadow:
+    0 0 20px rgba(186,255,33,.13),
+    inset 0 1px 0 rgba(255,255,255,.40);
+}
+
+
+.portfolioTopTab.active span{
+  opacity:.8;
+}
+
+
+/* ==========================================================
+   BOTÓN HAMBURGUESA
+========================================================== */
+
+.portfolioNavBtn{
+  width:40px;
+  height:40px;
+
+  flex:0 0 40px;
+
+  padding:0;
+
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+
+  gap:5px;
+
+  border-radius:12px;
+
+  border:1px solid rgba(186,255,33,.32);
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(186,255,33,.14),
+      rgba(255,255,255,.02)
+    );
+
+  box-shadow:
+    0 8px 22px rgba(0,0,0,.22),
+    inset 0 1px 0 rgba(255,255,255,.08);
+
+  cursor:pointer;
+
+  z-index:99999;
+
+  transition:.25s ease;
+}
+
+
+.portfolioNavBtn:hover{
+  border-color:#baff21;
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(186,255,33,.22),
+      rgba(255,255,255,.03)
+    );
+}
+
+
+.portfolioNavBtn span{
+  display:block;
+
+  width:17px;
+  height:2px;
+
+  border-radius:20px;
+
+  background:#baff21;
+
+  transition:
+    transform .3s ease,
+    opacity .2s ease;
+}
+
+
+.portfolioNavBtn.is-open span:nth-child(1){
+  transform:translateY(7px) rotate(45deg);
+}
+
+.portfolioNavBtn.is-open span:nth-child(2){
+  opacity:0;
+}
+
+.portfolioNavBtn.is-open span:nth-child(3){
+  transform:translateY(-7px) rotate(-45deg);
+}
+
+
+/* ==========================================================
+   OVERLAY SUAVE
+   NO TAPA TODA LA PÁGINA
+========================================================== */
+
+.portfolioNavOverlay{
+  position:fixed;
+  inset:0;
+
+  z-index:99990;
+
+  background:rgba(0,0,0,.20);
+
+  backdrop-filter:blur(2px);
+  -webkit-backdrop-filter:blur(2px);
+
+  opacity:0;
+  visibility:hidden;
+
+  transition:
+    opacity .25s ease,
+    visibility .25s ease;
+}
+
+
+.portfolioNavOverlay.is-open{
+  opacity:1;
+  visibility:visible;
+}
+
+
+/* ==========================================================
+   PANEL HAMBURGUESA COMPACTO
+========================================================== */
+
+.portfolioNavPanel{
+  position:fixed;
+
+  top:84px;
+  left:24px;
+
+  width:300px;
+  height:auto;
+
+  max-height:calc(100vh - 110px);
+
+  z-index:99995;
+
+  padding:18px;
+
+  box-sizing:border-box;
+
+  color:#fff;
+
+  background:rgba(7,9,10,.96);
+
+  border:
+    1px solid rgba(186,255,33,.16);
+
+  border-radius:20px;
+
+  box-shadow:
+    0 20px 55px rgba(0,0,0,.38),
+    inset 0 1px 0 rgba(255,255,255,.05);
+
+  backdrop-filter:blur(18px);
+  -webkit-backdrop-filter:blur(18px);
+
+  transform:
+    translateX(-22px)
+    scale(.97);
+
+  opacity:0;
+  visibility:hidden;
+
+  transition:
+    transform .32s ease,
+    opacity .25s ease,
+    visibility .25s ease;
+}
+
+
+.portfolioNavPanel.is-open{
+  transform:
+    translateX(0)
+    scale(1);
+
+  opacity:1;
+  visibility:visible;
+}
+
+
+/* ==========================================================
+   CABECERA DEL PANEL
+========================================================== */
+
+.portfolioNavHead{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+
+  padding-bottom:14px;
+  margin-bottom:3px;
+
+  border-bottom:
+    1px solid rgba(255,255,255,.10);
+}
+
+
+.portfolioNavHead > div{
+  display:flex;
+  flex-direction:column;
+  gap:4px;
+}
+
+
+.portfolioNavHead small{
+  font-size:8px;
+  font-weight:900;
+
+  letter-spacing:.18em;
+
+  color:#baff21;
+}
+
+
+.portfolioNavHead strong{
+  font-size:16px;
+  letter-spacing:.08em;
+}
+
+
+.portfolioNavClose{
+  width:34px;
+  height:34px;
+
+  display:grid;
+  place-items:center;
+
+  padding:0;
+
+  border-radius:50%;
+
+  border:
+    1px solid rgba(255,255,255,.13);
+
+  background:
+    rgba(255,255,255,.035);
+
+  color:#fff;
+
+  font-size:21px;
+
+  cursor:pointer;
+
+  transition:.25s ease;
+}
+
+
+.portfolioNavClose:hover{
+  background:
+    rgba(186,255,33,.12);
+
+  color:#baff21;
+
+  transform:rotate(90deg);
+}
+
+
+/* ==========================================================
+   OPCIONES
+========================================================== */
+
+.portfolioNavTab{
+  position:relative;
+
+  min-height:62px;
+
+  display:grid;
+
+  grid-template-columns:
+    28px
+    minmax(0,1fr)
+    18px;
+
+  align-items:center;
+
+  gap:8px;
+
+  padding:9px 7px;
+
+  color:#fff;
+
+  text-decoration:none;
+
+  border-bottom:
+    1px solid rgba(255,255,255,.08);
+
+  transition:.25s ease;
+}
+
+
+.portfolioNavTab::before{
+  content:"";
+
+  position:absolute;
+
+  left:0;
+  top:12px;
+  bottom:12px;
+
+  width:2px;
+
+  background:#baff21;
+
+  transform:scaleY(0);
+
+  transition:.25s ease;
+}
+
+
+.portfolioNavTab:hover{
+  padding-left:13px;
+
+  background:
+    rgba(255,255,255,.035);
+}
+
+
+.portfolioNavTab:hover::before,
+.portfolioNavTab.active::before{
+  transform:scaleY(1);
+}
+
+
+.portfolioNavTab.active{
+  background:
+    linear-gradient(
+      90deg,
+      rgba(186,255,33,.10),
+      rgba(186,255,33,.025)
+    );
+}
+
+
+.portfolioNavNum{
+  font-size:9px;
+
+  color:
+    rgba(255,255,255,.40);
+}
+
+
+.portfolioNavText{
+  display:flex;
+  flex-direction:column;
+
+  gap:4px;
+}
+
+
+.portfolioNavText strong{
+  font-size:15px;
+  line-height:1.1;
+
+  letter-spacing:.05em;
+}
+
+
+.portfolioNavText small{
+  font-size:9px;
+  line-height:1.35;
+
+  color:
+    rgba(255,255,255,.50);
+}
+
+
+.portfolioNavArrow{
+  color:#baff21;
+
+  font-size:14px;
+
+  transition:.25s ease;
+}
+
+
+.portfolioNavTab:hover .portfolioNavArrow{
+  transform:translate(2px,-2px);
+}
+
+
+/* ==========================================================
+   TABLET
+========================================================== */
+
+@media(max-width:1000px){
+
+  header{
+    gap:10px;
+  }
+
+  header .main-nav{
+    gap:18px;
+  }
+
+  .portfolioTopTab{
+    min-width:90px;
+    padding:9px 10px;
+    font-size:9px;
+  }
+
+}
+
+
+/* ==========================================================
+   CELULAR
+========================================================== */
+
+@media(max-width:760px){
+
+  header{
+    display:grid;
+
+    grid-template-columns:
+      auto
+      auto
+      1fr;
+
+    align-items:center;
+
+    gap:9px;
+  }
+
+
+  header .main-nav{
+    display:none;
+  }
+
+
+  .portfolioNavBtn{
+    width:38px;
+    height:38px;
+
+    flex-basis:38px;
+
+    border-radius:11px;
+  }
+
+
+  .portfolioNavBtn span{
+    width:16px;
+  }
+
+
+  .portfolioTopTabs{
+    justify-self:end;
+
+    padding:3px;
+  }
+
+
+  .portfolioTopTab{
+    min-width:auto;
+
+    padding:8px 8px;
+
+    font-size:8px;
+
+    gap:4px;
+  }
+
+
+  .portfolioTopTab span{
+    display:none;
+  }
+
+
+  .portfolioNavPanel{
+    top:68px;
+    left:12px;
+
+    width:280px;
+
+    max-width:calc(100vw - 24px);
+
+    max-height:calc(100vh - 85px);
+
+    padding:15px;
+
+    border-radius:17px;
+  }
+
+}
+
+
+/* ==========================================================
+   CELULAR PEQUEÑO
+========================================================== */
+
+@media(max-width:480px){
+
+  .portfolioTopTabs{
+    position:fixed;
+
+    left:10px;
+    right:10px;
+    bottom:10px;
+
+    top:auto;
+
+    z-index:99980;
+
+    justify-content:center;
+
+    background:
+      rgba(8,9,10,.90);
+
+    border:
+      1px solid rgba(255,255,255,.10);
+  }
+
+
+  .portfolioTopTab{
+    flex:1;
+
+    min-width:0;
+
+    padding:10px 7px;
+  }
+
+
+  .portfolioNavPanel{
+    width:270px;
+
+    max-width:calc(100vw - 20px);
+
+    left:10px;
+  }
+
+}
+
+
+/* ==========================================================
+   FIN PESTAÑAS + MENU HAMBURGUESA
+========================================================== */
