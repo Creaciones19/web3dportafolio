@@ -1,0 +1,5 @@
+{
+  "name": "vista-coches-motos",
+  "private": true,
+  "scripts": { "dev": "node dev-server.mjs" }
+}
