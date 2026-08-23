@@ -417,14 +417,16 @@ header .main-nav a{
   transition:.25s ease;
 }
 
-
 .portfolioNavTab::before{
+
   content:"";
 
   position:absolute;
 
   left:0;
+
   top:12px;
+
   bottom:12px;
 
   width:2px;
@@ -434,78 +436,110 @@ header .main-nav a{
   transform:scaleY(0);
 
   transition:.25s ease;
+
 }
 
 
+
 .portfolioNavTab:hover{
+
   padding-left:13px;
 
   background:
     rgba(255,255,255,.035);
+
 }
+
 
 
 .portfolioNavTab:hover::before,
 .portfolioNavTab.active::before{
+
   transform:scaleY(1);
+
 }
 
 
+
 .portfolioNavTab.active{
+
   background:
     linear-gradient(
       90deg,
       rgba(186,255,33,.10),
       rgba(186,255,33,.025)
     );
+
 }
 
 
+
 .portfolioNavNum{
+
   font-size:9px;
 
   color:
     rgba(255,255,255,.40);
+
 }
+
 
 
 .portfolioNavText{
+
   display:flex;
+
   flex-direction:column;
 
   gap:4px;
+
 }
+
 
 
 .portfolioNavText strong{
+
   font-size:15px;
+
   line-height:1.1;
 
   letter-spacing:.05em;
+
 }
 
 
+
 .portfolioNavText small{
+
   font-size:9px;
+
   line-height:1.35;
 
   color:
     rgba(255,255,255,.50);
+
 }
 
 
+
 .portfolioNavArrow{
+
   color:#baff21;
 
   font-size:14px;
 
   transition:.25s ease;
+
 }
+
 
 
 .portfolioNavTab:hover .portfolioNavArrow{
+
   transform:translate(2px,-2px);
+
 }
+
 
 
 /* ==========================================================
@@ -531,13 +565,16 @@ header .main-nav a{
 }
 
 
+
 /* ==========================================================
    CELULAR
+   MENU HAMBURGUESA PEGADO AL BOTON
 ========================================================== */
 
 @media(max-width:760px){
 
   header{
+
     display:grid;
 
     grid-template-columns:
@@ -548,37 +585,63 @@ header .main-nav a{
     align-items:center;
 
     gap:9px;
+
   }
+
 
 
   header .main-nav{
+
     display:none;
+
   }
 
+
+
+  /* BOTON HAMBURGUESA */
 
   .portfolioNavBtn{
+
     width:38px;
+
     height:38px;
 
-    flex-basis:38px;
+    flex:0 0 38px;
 
     border-radius:11px;
+
+    position:relative;
+
+    z-index:10010;
+
   }
+
 
 
   .portfolioNavBtn span{
+
     width:16px;
+
   }
 
 
+
+  /* LAS PESTAÑAS SE CONSERVAN */
+
   .portfolioTopTabs{
+
+    display:flex !important;
+
     justify-self:end;
 
     padding:3px;
+
   }
 
 
+
   .portfolioTopTab{
+
     min-width:auto;
 
     padding:8px 8px;
@@ -586,79 +649,496 @@ header .main-nav a{
     font-size:8px;
 
     gap:4px;
+
   }
+
 
 
   .portfolioTopTab span{
+
     display:none;
+
   }
 
 
+
+  /* ========================================================
+     PANEL DEL HAMBURGUESA
+     PEQUEÑO Y PEGADO AL BOTON
+  ======================================================== */
+
   .portfolioNavPanel{
-    top:68px;
-    left:12px;
 
-    width:280px;
+    display:block !important;
 
-    max-width:calc(100vw - 24px);
+    position:fixed !important;
 
-    max-height:calc(100vh - 85px);
+    top:14px !important;
 
-    padding:15px;
+    left:64px !important;
 
-    border-radius:17px;
+    right:auto !important;
+
+    bottom:auto !important;
+
+
+    width:200px !important;
+
+    max-width:calc(100vw - 74px) !important;
+
+
+    height:auto !important;
+
+    min-height:0 !important;
+
+    max-height:none !important;
+
+
+    padding:9px !important;
+
+    margin:0 !important;
+
+
+    border-radius:13px !important;
+
+
+    background:#0a0c0d !important;
+
+
+    border:
+      1px solid rgba(186,255,33,.24) !important;
+
+
+    box-shadow:
+      0 14px 34px rgba(0,0,0,.42) !important;
+
+
+    overflow:hidden !important;
+
+
+    opacity:0 !important;
+
+    visibility:hidden !important;
+
+    pointer-events:none !important;
+
+
+    transform:
+      translateX(-5px)
+      scale(.97) !important;
+
+
+    transform-origin:
+      left top !important;
+
+
+    transition:
+      opacity .20s ease,
+      transform .22s ease,
+      visibility .20s ease !important;
+
+
+    z-index:10009 !important;
+
+  }
+
+
+
+  .portfolioNavPanel.is-open{
+
+    opacity:1 !important;
+
+    visibility:visible !important;
+
+    pointer-events:auto !important;
+
+
+    transform:
+      translateX(0)
+      scale(1) !important;
+
+  }
+
+
+
+  /* ========================================================
+     OVERLAY MUY SUAVE
+  ======================================================== */
+
+  .portfolioNavOverlay{
+
+    position:fixed !important;
+
+    inset:0 !important;
+
+
+    z-index:10000 !important;
+
+
+    background:
+      rgba(0,0,0,.05) !important;
+
+
+    backdrop-filter:none !important;
+
+    -webkit-backdrop-filter:none !important;
+
+
+    opacity:0 !important;
+
+    visibility:hidden !important;
+
+    pointer-events:none !important;
+
+  }
+
+
+
+  .portfolioNavOverlay.is-open{
+
+    opacity:1 !important;
+
+    visibility:visible !important;
+
+    pointer-events:auto !important;
+
+  }
+
+
+
+  /* ========================================================
+     CABECERA DEL PANEL
+  ======================================================== */
+
+  .portfolioNavHead{
+
+    display:flex !important;
+
+    align-items:center !important;
+
+    justify-content:space-between !important;
+
+
+    gap:6px !important;
+
+
+    padding:
+      0 0 7px 0 !important;
+
+
+    margin:
+      0 0 2px 0 !important;
+
+
+    border-bottom:
+      1px solid rgba(255,255,255,.09) !important;
+
+  }
+
+
+
+  .portfolioNavHead > div{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:2px;
+
+  }
+
+
+
+  .portfolioNavHead small{
+
+    font-size:6px !important;
+
+    color:#baff21 !important;
+
+    letter-spacing:.13em !important;
+
+  }
+
+
+
+  .portfolioNavHead strong{
+
+    font-size:10px !important;
+
+    line-height:1 !important;
+
+    color:#fff !important;
+
+  }
+
+
+
+  /* X DEL PANEL */
+
+  .portfolioNavClose{
+
+    display:grid !important;
+
+    place-items:center !important;
+
+
+    width:24px !important;
+
+    height:24px !important;
+
+    min-width:24px !important;
+
+
+    padding:0 !important;
+
+
+    border-radius:50% !important;
+
+
+    border:
+      1px solid rgba(255,255,255,.14) !important;
+
+
+    background:
+      rgba(255,255,255,.04) !important;
+
+
+    color:#fff !important;
+
+
+    font-size:15px !important;
+
+  }
+
+
+
+  /* ========================================================
+     OPCIONES DEL PANEL
+  ======================================================== */
+
+  .portfolioNavTab{
+
+    display:grid !important;
+
+
+    grid-template-columns:
+      17px
+      minmax(0,1fr)
+      11px !important;
+
+
+    align-items:center !important;
+
+
+    min-height:40px !important;
+
+
+    gap:4px !important;
+
+
+    padding:
+      4px 3px !important;
+
+
+    color:#fff !important;
+
+
+    text-decoration:none !important;
+
+  }
+
+
+
+  .portfolioNavTab::before{
+
+    top:7px;
+
+    bottom:7px;
+
+  }
+
+
+
+  .portfolioNavTab:hover{
+
+    padding-left:6px !important;
+
+  }
+
+
+
+  .portfolioNavNum{
+
+    font-size:7px !important;
+
+  }
+
+
+
+  .portfolioNavText{
+
+    gap:2px !important;
+
+  }
+
+
+
+  .portfolioNavText strong{
+
+    font-size:9.5px !important;
+
+    line-height:1.05 !important;
+
+  }
+
+
+
+  .portfolioNavText small{
+
+    font-size:6px !important;
+
+    line-height:1.15 !important;
+
+  }
+
+
+
+  .portfolioNavArrow{
+
+    font-size:8px !important;
+
   }
 
 }
 
 
+
 /* ==========================================================
    CELULAR PEQUEÑO
+   PESTAÑAS ABAJO SE QUEDAN
 ========================================================== */
 
 @media(max-width:480px){
 
   .portfolioTopTabs{
-    position:fixed;
 
-    left:10px;
-    right:10px;
-    bottom:10px;
+    position:fixed !important;
 
-    top:auto;
+    left:10px !important;
 
-    z-index:99980;
+    right:10px !important;
 
-    justify-content:center;
+    bottom:10px !important;
+
+    top:auto !important;
+
+
+    z-index:99980 !important;
+
+
+    display:flex !important;
+
+    justify-content:center !important;
+
+
+    padding:4px !important;
+
 
     background:
-      rgba(8,9,10,.90);
+      rgba(8,9,10,.90) !important;
+
 
     border:
-      1px solid rgba(255,255,255,.10);
+      1px solid rgba(255,255,255,.10) !important;
+
+
+    border-radius:999px !important;
+
   }
+
 
 
   .portfolioTopTab{
-    flex:1;
 
-    min-width:0;
+    flex:1 !important;
 
-    padding:10px 7px;
+    min-width:0 !important;
+
+    padding:10px 7px !important;
+
   }
 
 
+
+  /* PANEL AUN MAS PEGADO Y CHICO */
+
   .portfolioNavPanel{
-    width:270px;
 
-    max-width:calc(100vw - 20px);
+    top:12px !important;
 
-    left:10px;
+    left:58px !important;
+
+
+    width:185px !important;
+
+    max-width:calc(100vw - 66px) !important;
+
+
+    padding:8px !important;
+
+
+    border-radius:12px !important;
+
+  }
+
+
+
+  .portfolioNavHead strong{
+
+    font-size:9px !important;
+
+  }
+
+
+
+  .portfolioNavTab{
+
+    min-height:38px !important;
+
+
+    grid-template-columns:
+      16px
+      minmax(0,1fr)
+      10px !important;
+
+
+    padding:
+      4px 2px !important;
+
+  }
+
+
+
+  .portfolioNavText strong{
+
+    font-size:9px !important;
+
+  }
+
+
+
+  .portfolioNavText small{
+
+    font-size:5.8px !important;
+
+  }
+
+
+
+  .portfolioNavArrow{
+
+    font-size:7px !important;
+
   }
 
 }
-
-
-/* ==========================================================
-   FIN PESTAÑAS + MENU HAMBURGUESA
-========================================================== */
