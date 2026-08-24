@@ -8,160 +8,195 @@
   <link rel="stylesheet" href="style.css">
 </head>
 
-<body>
+<body> 
+ 
+<header> 
+ 
+  <!-- MENU HAMBURGUESA PRIMERO --> 
+  <button 
+    class="portfolioNavBtn" 
+    id="portfolioNavBtn" 
+    type="button" 
+    aria-label="Abrir menú de navegación" 
+    aria-expanded="false" 
+  > 
+    <span></span> 
+    <span></span> 
+    <span></span> 
+  </button> 
+ 
+ 
+  <!-- LOGO --> 
+  <a class="brand" href="#inicio"> 
+    <b>AX</b> MOTOR 
+  </a> 
+ 
+ 
+  <!-- NAVEGACION PRINCIPAL --> 
+  <nav class="main-nav"> 
+ 
+    <a href="#experiencia"> 
+      Experiencia 
+    </a> 
+ 
+    <a href="#modelos"> 
+      Modelos 
+    </a> 
+ 
+    <a href="#modelos"> 
+      Explorar 
+    </a> 
+ 
+  </nav> 
+ 
+ 
+  <!-- PESTAÑAS ENTRE LOS HTML --> 
+  <nav 
+    class="portfolioTopTabs" 
+    aria-label="Navegación entre experiencias" 
+  > 
+ 
+    <a 
+      class="portfolioTopTab active" 
+      href="index.html" 
+    > 
+      <span>01</span> 
+      COCHES 3D 
+    </a> 
+ 
+    <a 
+      class="portfolioTopTab" 
+      href="indexcoloresheader.html" 
+    > 
+      <span>02</span> 
+      SPECTRA 
+    </a> 
 
-<header>
+    <a 
+      class="portfolioTopTab" 
+      href="indexfutbol1.html" 
+    > 
+      <span>03</span> 
+      FÚTBOL 
+    </a> 
+ 
+  </nav> 
+ 
+</header> 
+ 
+ 
+<!-- PANEL DEL MENU HAMBURGUESA --> 
+ 
+<div 
+  class="portfolioNavOverlay" 
+  id="portfolioNavOverlay" 
+></div> 
+ 
+<nav 
+  class="portfolioNavPanel" 
+  id="portfolioNavPanel" 
+  aria-hidden="true" 
+> 
+ 
+  <div class="portfolioNavHead"> 
+ 
+    <div> 
+      <small>PORTAFOLIO 3D</small> 
+      <strong>EXPERIENCIAS</strong> 
+    </div> 
+ 
+    <button 
+      class="portfolioNavClose" 
+      id="portfolioNavClose" 
+      type="button" 
+      aria-label="Cerrar menú" 
+    > 
+      × 
+    </button> 
+ 
+  </div> 
+ 
+  <a 
+    class="portfolioNavTab active" 
+    href="index.html" 
+  > 
+ 
+    <span class="portfolioNavNum"> 
+      01 
+    </span> 
+ 
+    <span class="portfolioNavText"> 
+ 
+      <strong> 
+        COCHES 3D 
+      </strong> 
+ 
+      <small> 
+        Experiencia automotriz 
+      </small> 
+ 
+    </span> 
+ 
+    <span class="portfolioNavArrow"> 
+      ↗ 
+    </span> 
+ 
+  </a> 
+ 
+  <a 
+    class="portfolioNavTab" 
+    href="estrucura3dmaquillaje.html" 
+  > 
+ 
+    <span class="portfolioNavNum"> 
+      02 
+    </span> 
+ 
+    <span class="portfolioNavText"> 
+ 
+      <strong> 
+        SPECTRA 
+      </strong> 
+ 
+      <small> 
+        Experiencia interactiva de color 
+      </small> 
+ 
+    </span> 
+ 
+    <span class="portfolioNavArrow"> 
+      ↗ 
+    </span> 
+ 
+  </a> 
 
-  <!-- MENU HAMBURGUESA PRIMERO -->
-  <button
-    class="portfolioNavBtn"
-    id="portfolioNavBtn"
-    type="button"
-    aria-label="Abrir menú de navegación"
-    aria-expanded="false"
-  >
-    <span></span>
-    <span></span>
-    <span></span>
-  </button>
-
-
-  <!-- LOGO -->
-  <a class="brand" href="#inicio">
-    <b>AX</b> MOTOR
-  </a>
-
-
-  <!-- NAVEGACION PRINCIPAL -->
-  <nav class="main-nav">
-
-    <a href="#experiencia">
-      Experiencia
-    </a>
-
-    <a href="#modelos">
-      Modelos
-    </a>
-
-    <a href="#modelos">
-      Explorar
-    </a>
-
-  </nav>
-
-
-  <!-- PESTAÑAS ENTRE LOS DOS HTML -->
-  <nav
-    class="portfolioTopTabs"
-    aria-label="Navegación entre experiencias"
-  >
-
-    <a
-      class="portfolioTopTab active"
-      href="index.html"
-    >
-      <span>01</span>
-      COCHES 3D
-    </a>
-
-    <a
-      class="portfolioTopTab"
-      href="estrucura3dmaquillaje.html"
-    >
-      <span>02</span>
-      SPECTRA
-    </a>
-
-  </nav>
-
-</header>
-
-
-<!-- PANEL DEL MENU HAMBURGUESA -->
-
-<div
-  class="portfolioNavOverlay"
-  id="portfolioNavOverlay"
-></div>
-
-<nav
-  class="portfolioNavPanel"
-  id="portfolioNavPanel"
-  aria-hidden="true"
->
-
-  <div class="portfolioNavHead">
-
-    <div>
-      <small>PORTAFOLIO 3D</small>
-      <strong>EXPERIENCIAS</strong>
-    </div>
-
-    <button
-      class="portfolioNavClose"
-      id="portfolioNavClose"
-      type="button"
-      aria-label="Cerrar menú"
-    >
-      ×
-    </button>
-
-  </div>
-
-  <a
-    class="portfolioNavTab active"
-    href="index.html"
-  >
-
-    <span class="portfolioNavNum">
-      01
-    </span>
-
-    <span class="portfolioNavText">
-
-      <strong>
-        COCHES 3D
-      </strong>
-
-      <small>
-        Experiencia automotriz
-      </small>
-
-    </span>
-
-    <span class="portfolioNavArrow">
-      ↗
-    </span>
-
-  </a>
-
-  <a
-    class="portfolioNavTab"
-    href="estrucura3dmaquillaje.html"
-  >
-
-    <span class="portfolioNavNum">
-      02
-    </span>
-
-    <span class="portfolioNavText">
-
-      <strong>
-        SPECTRA
-      </strong>
-
-      <small>
-        Experiencia interactiva de color
-      </small>
-
-    </span>
-
-    <span class="portfolioNavArrow">
-      ↗
-    </span>
-
-  </a>
-
+  <a 
+    class="portfolioNavTab" 
+    href="indexfutbol1.html" 
+  > 
+ 
+    <span class="portfolioNavNum"> 
+      03 
+    </span> 
+ 
+    <span class="portfolioNavText"> 
+ 
+      <strong> 
+        FÚTBOL 
+      </strong> 
+ 
+      <small> 
+        Experiencia deportiva interactiva 
+      </small> 
+ 
+    </span> 
+ 
+    <span class="portfolioNavArrow"> 
+      ↗ 
+    </span> 
+ 
+  </a> 
+ 
 </nav>
 
 

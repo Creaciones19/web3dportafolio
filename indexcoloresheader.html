@@ -1188,53 +1188,72 @@ main{position:relative;z-index:2;background:transparent;overflow:visible}
 
 </style>
 </head>
-<body>
+<body> 
+ 
+<!-- ===== NAVEGACIÓN ENTRE PÁGINAS ===== --> 
+<button class="portfolioNavBtn" id="portfolioNavBtn" type="button" 
+        aria-label="Abrir menú de navegación" aria-expanded="false"> 
+  <span></span><span></span><span></span> 
+</button> 
+ 
+<div class="portfolioNavOverlay" id="portfolioNavOverlay"></div> 
+ 
+<nav class="portfolioTopTabs" aria-label="Navegación entre experiencias"> 
 
-<!-- ===== NAVEGACIÓN ENTRE PÁGINAS ===== -->
-<button class="portfolioNavBtn" id="portfolioNavBtn" type="button"
-        aria-label="Abrir menú de navegación" aria-expanded="false">
-  <span></span><span></span><span></span>
-</button>
+  <a class="portfolioTopTab active" href="indexcoloresheader.html"> 
+    <span>01</span> SPECTRA 
+  </a> 
 
-<div class="portfolioNavOverlay" id="portfolioNavOverlay"></div>
+  <a class="portfolioTopTab" href="index.html"> 
+    <span>02</span> COCHES 3D 
+  </a> 
 
-<nav class="portfolioTopTabs" aria-label="Navegación entre experiencias">
-  <a class="portfolioTopTab active" href="indexcoloresheader.html">
-    <span>01</span> SPECTRA
-  </a>
-  <a class="portfolioTopTab" href="index.html">
-    <span>02</span> COCHES 3D
-  </a>
-</nav>
+  <a class="portfolioTopTab" href="indexfutbol1.html"> 
+    <span>03</span> FÚTBOL 
+  </a> 
 
+</nav> 
+ 
+ 
+<nav class="portfolioNavPanel" id="portfolioNavPanel" aria-hidden="true"> 
 
-<nav class="portfolioNavPanel" id="portfolioNavPanel" aria-hidden="true">
-  <div class="portfolioNavHead">
-    <div>
-      <small>PORTAFOLIO 3D</small>
-      <strong>EXPERIENCIAS</strong>
-    </div>
-    <button class="portfolioNavClose" id="portfolioNavClose"
-            type="button" aria-label="Cerrar menú">×</button>
-  </div>
+  <div class="portfolioNavHead"> 
+    <div> 
+      <small>PORTAFOLIO 3D</small> 
+      <strong>EXPERIENCIAS</strong> 
+    </div> 
 
-  <a class="portfolioNavTab active" href="indexcoloresheader.html">
-    <span class="portfolioNavNum">01</span>
-    <span class="portfolioNavText">
-      <strong>SPECTRA</strong>
-      <small>Experiencia interactiva de color</small>
-    </span>
-    <span class="portfolioNavArrow">↗</span>
-  </a>
-
-  <a class="portfolioNavTab" href="index.html">
-    <span class="portfolioNavNum">02</span>
-    <span class="portfolioNavText">
-      <strong>COCHES 3D</strong>
-      <small>Experiencia automotriz</small>
-    </span>
-    <span class="portfolioNavArrow">↗</span>
-  </a>
+    <button class="portfolioNavClose" id="portfolioNavClose" 
+            type="button" aria-label="Cerrar menú">×</button> 
+  </div> 
+ 
+  <a class="portfolioNavTab active" href="indexcoloresheader.html"> 
+    <span class="portfolioNavNum">01</span> 
+    <span class="portfolioNavText"> 
+      <strong>SPECTRA</strong> 
+      <small>Experiencia interactiva de color</small> 
+    </span> 
+    <span class="portfolioNavArrow">↗</span> 
+  </a> 
+ 
+  <a class="portfolioNavTab" href="index.html"> 
+    <span class="portfolioNavNum">02</span> 
+    <span class="portfolioNavText"> 
+      <strong>COCHES 3D</strong> 
+      <small>Experiencia automotriz</small> 
+    </span> 
+    <span class="portfolioNavArrow">↗</span> 
+  </a> 
+ 
+  <a class="portfolioNavTab" href="indexfutbol1.html"> 
+    <span class="portfolioNavNum">03</span> 
+    <span class="portfolioNavText"> 
+      <strong>FÚTBOL</strong> 
+      <small>Experiencia deportiva interactiva</small> 
+    </span> 
+    <span class="portfolioNavArrow">↗</span> 
+  </a> 
+ 
 </nav>
 <!-- ===== FIN NAVEGACIÓN ENTRE PÁGINAS ===== -->
 
